@@ -1,0 +1,31 @@
+<app-auth-header></app-auth-header>
+
+<div class="auth-block">
+  <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="card">
+    <div class="card-content">
+      <span class="card-title">Создать аккаунт</span>
+      <app-input
+        label="Email"
+        id="email"
+        type="text"
+        [control]="getInputName('email')"
+      ></app-input>
+
+      <app-input
+        label="Пароль"
+        id="password"
+        type="password"
+        [control]="getInputName('password')"
+      ></app-input>
+    </div>
+    <div class="card-action">
+      <button
+        [disabled]="authForm.invalid || (pending$ | async)"
+        type="submit"
+        class="modal-action btn waves-effect"
+      >
+        Войти
+      </button>
+    </div>
+  </form>
+</div>
