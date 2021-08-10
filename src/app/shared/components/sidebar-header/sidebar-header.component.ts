@@ -12,7 +12,7 @@ export class SidebarHeaderComponent implements OnInit {
     { url: '/overview', name: 'Обзор' },
     { url: '/analytics', name: 'Аналитика' },
     { url: '/history', name: 'История' },
-    { url: '/order', name: 'Новый заказ' },
+    { url: '/order', name: 'Добавить заказ' },
     { url: '/assortment', name: 'Ассортимент' },
   ];
 

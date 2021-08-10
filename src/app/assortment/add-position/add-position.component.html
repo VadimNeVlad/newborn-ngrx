@@ -1,0 +1,43 @@
+<div class="page-subtitle">
+  <h4>Позиции:</h4>
+  <button
+    (click)="openModal('addPosition')"
+    class="waves-effect waves-light btn grey darken-1 btn-small modal-trigger"
+    data-target="create-modal"
+  >
+    Добавить позицию
+  </button>
+</div>
+
+<form [formGroup]="positionForm" (ngSubmit)="onSubmit()">
+  <app-modal title="Добавить Позицию" modalType="addPosition">
+    <app-input
+      label="Название"
+      id="name"
+      type="text"
+      [control]="getInputName('name')"
+    ></app-input>
+    <app-input
+      label="Стоимость"
+      type="number"
+      id="cost"
+      [control]="getInputName('cost')"
+    ></app-input>
+    <ng-container buttons>
+      <button
+        type="button"
+        (click)="closeModal()"
+        class="modal-action waves-effect waves-black btn-flat"
+      >
+        Отмена
+      </button>
+      <button
+        [disabled]="positionForm.invalid || (isPending$ | async)"
+        type="submit"
+        class="modal-action btn waves-effect"
+      >
+        Добавить
+      </button>
+    </ng-container>
+  </app-modal>
+</form>
