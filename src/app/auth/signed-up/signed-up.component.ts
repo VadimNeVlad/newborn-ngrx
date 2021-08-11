@@ -6,9 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
-import { register } from '../store/auth.actions';
-
-import { isSubmitingSelector } from '../store/auth.selectors';
+import { isSubmitingSelector } from 'src/app/store/auth/auth.selectors';
+import { register } from '../../store/auth/auth.actions';
 
 @Component({
   selector: 'app-signed-up',

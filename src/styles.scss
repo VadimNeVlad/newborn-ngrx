@@ -11,3 +11,20 @@
 #toast-container {
   top: auto;
 }
+
+.btn {
+  position: relative;
+}
+
+.cart-counter {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: -8px;
+  left: 38px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: red;
+}

@@ -1,0 +1,54 @@
+<app-modal [cartModal]="true" title="Ваш Заказ" modalType="orderSum">
+  <ng-container *ngIf="orderBuilder.orderList.length !== 0; else emptyCart">
+    <table class="highlight">
+      <thead>
+        <tr>
+          <th>Название</th>
+          <th>Количество</th>
+          <th>Цена</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody *ngFor="let order of orderBuilder.orderList">
+        <tr>
+          <td>{{ order.name }}</td>
+          <td>{{ order.quantity }}</td>
+          <td>{{ order.cost }} руб.</td>
+          <td (click)="deleteItem(order._id || '')">
+            <i class="material-icons pointer">delete</i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="order-summary">
+      <p>
+        Общая стоимость <strong>{{ orderBuilder.price }} руб.</strong>
+      </p>
+    </div>
+  </ng-container>
+
+  <ng-container buttons>
+    <button
+      type="button"
+      (click)="closeModal()"
+      class="modal-action waves-effect waves-black btn-flat"
+    >
+      Отмена
+    </button>
+    <button
+      (click)="onSubmit()"
+      [disabled]="orderBuilder.orderList.length === 0 || (isPending$ | async)"
+      type="submit"
+      class="modal-action btn waves-effect"
+    >
+      Подтвердить
+    </button>
+  </ng-container>
+</app-modal>
+
+<ng-template #emptyCart>
+  <div class="center empty-spacer">
+    <h5>Корзина Пуста</h5>
+  </div>
+</ng-template>

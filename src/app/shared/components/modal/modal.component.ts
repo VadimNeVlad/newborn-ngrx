@@ -13,6 +13,7 @@ export class ModalComponent implements OnInit {
   @Input() modalType = '';
   @Input() title = '';
   @Input() text = '';
+  @Input() cartModal = false;
 
   modalStatus$ = new Observable<string>();
 

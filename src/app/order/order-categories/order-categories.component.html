@@ -1,0 +1,52 @@
+<div class="page-title">
+  <h4>Заказ</h4>
+  <button
+    (click)="openModal('orderSum')"
+    class="btn grey darken-1 modal-trigger"
+    data-target="explore-order"
+  >
+    <i class="material-icons">add_shopping_cart</i>
+    <div *ngIf="orderBuilder.orderList.length > 0" class="cart-counter">
+      <span>{{ orderBuilder.orderList.length }}</span>
+    </div>
+  </button>
+</div>
+
+<div
+  *ngIf="
+    !(isLoading$ | async) && (categories$ | async) as categories;
+    else loader
+  "
+>
+  <div *ngIf="categories.length !== 0; else empty" class="frow order-row">
+    <a
+      [routerLink]="category._id"
+      *ngFor="let category of categories"
+      class="card waves-effect pointer"
+    >
+      <div class="center img-wrap">
+        <img
+          [src]="baseUrl + category.imageSrc"
+          class="responsive-img order-img"
+        />
+      </div>
+      <div class="card-content center p10">
+        <h5 class="m0">{{ category.name }}</h5>
+      </div>
+    </a>
+  </div>
+</div>
+
+<ng-template #loader>
+  <div class="center">
+    <app-loader></app-loader>
+  </div>
+</ng-template>
+
+<ng-template #empty>
+  <div class="center">
+    <h4>Категорий нет</h4>
+  </div>
+</ng-template>
+
+<app-order-cart></app-order-cart>

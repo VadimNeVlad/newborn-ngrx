@@ -1,6 +1,5 @@
 import {
   AfterContentChecked,
-  AfterContentInit,
   Component,
   OnDestroy,
   OnInit,
@@ -15,11 +14,11 @@ import { select, Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 import { MaterialService } from 'src/app/shared/services/material.service';
-import { login } from '../store/auth.actions';
 import {
   currentUserEmailSelector,
   isSubmitingSelector,
-} from '../store/auth.selectors';
+} from 'src/app/store/auth/auth.selectors';
+import { login } from '../../store/auth/auth.actions';
 
 @Component({
   selector: 'app-signed-in',
