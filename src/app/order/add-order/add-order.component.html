@@ -1,0 +1,61 @@
+<div class="page-title">
+  <h4>
+    <a routerLink="/order">Заказ</a>
+    <i class="material-icons">keyboard_arrow_right</i>
+    Добавить продукцию
+  </h4>
+  <button
+    (click)="openModal('orderSum')"
+    class="btn grey darken-1 modal-trigger"
+    data-target="explore-order"
+  >
+    <i class="material-icons">add_shopping_cart</i>
+    <div *ngIf="orderBuilder.orderList.length > 0" class="cart-counter">
+      <span>{{ orderBuilder.orderList.length }}</span>
+    </div>
+  </button>
+</div>
+
+<ng-container
+  *ngIf="!(isLoading$ | async) && (positions$ | async) as positions"
+>
+  <table *ngIf="positions.length !== 0; else empty" class="highlight">
+    <thead>
+      <tr>
+        <th>Название</th>
+        <th>Стоимость</th>
+        <th>Количество</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let position of positions">
+        <td>{{ position.name }}</td>
+        <td>{{ position.cost }} руб.</td>
+        <td>
+          <div class="input-field inline order-position-input">
+            <input type="number" min="1" [(ngModel)]="position.quantity" />
+          </div>
+        </td>
+        <td>
+          <button
+            (click)="addItem(position)"
+            [disabled]="!position.quantity"
+            class="btn waves-effect wavers-light btn-small"
+          >
+            Добавить
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #empty>
+  <div class="center">
+    <h5>В данный момент категорий нет</h5>
+  </div>
+</ng-template>
+
+<app-order-cart></app-order-cart>

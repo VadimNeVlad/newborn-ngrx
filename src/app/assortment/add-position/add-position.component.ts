@@ -59,5 +59,6 @@ export class AddPositionComponent implements OnInit {
     };
 
     this.store.dispatch(addPosition({ position }));
+    this.positionForm.reset();
   }
 }

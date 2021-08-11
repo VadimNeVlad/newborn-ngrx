@@ -1,11 +1,16 @@
 <div
   (click)="onClose()"
-  [ngClass]="modalType === (modalStatus$ | async) ? 'open' : ''"
+  [ngClass]="{
+    open: modalType === (modalStatus$ | async)
+  }"
   class="modal-overlay"
 ></div>
 <div
   id="create-modal"
-  [ngClass]="modalType === (modalStatus$ | async) ? 'open' : ''"
+  [ngClass]="{
+    open: modalType === (modalStatus$ | async),
+    cartModal: cartModal
+  }"
   class="modal"
 >
   <div class="modal-content">

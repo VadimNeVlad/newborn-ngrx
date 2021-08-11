@@ -5,9 +5,10 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { SignedUpComponent } from './signed-up/signed-up.component';
 import { SignedInComponent } from './signed-in/signed-in.component';
 import { EffectsModule } from '@ngrx/effects';
-import { AuthEffects } from './store/auth.effects';
+
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthEffects } from '../store/auth/auth.effects';
 
 @NgModule({
   declarations: [SignedUpComponent, SignedInComponent],

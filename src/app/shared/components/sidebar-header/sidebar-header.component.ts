@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { logout } from 'src/app/auth/store/auth.actions';
+import { logout } from 'src/app/store/auth/auth.actions';
 
 @Component({
   selector: 'app-sidebar-header',
