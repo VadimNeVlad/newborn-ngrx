@@ -1,5 +1,4 @@
 import { createAction, props } from '@ngrx/store';
-import { Update } from '@ngrx/entity';
 import { Order } from 'src/app/shared/models/order';
 
 export const addOrder = createAction(
@@ -12,49 +11,36 @@ export const addOrderSuccess = createAction(
   props<{ order: Order }>()
 );
 
-// export const loadOrders = createAction(
-//   '[Order/API] Load Orders',
-//   props<{ orders: Order[] }>()
-// );
+export const getOrders = createAction(
+  '[Order] Get Orders',
+  props<{ params: any }>()
+);
 
-// export const addOrder = createAction(
-//   '[Order/API] Add Order',
-//   props<{ order: Order }>()
-// );
+export const getOrdersSuccess = createAction(
+  '[Order] Get Orders Success',
+  props<{ orders: Order[] }>()
+);
 
-// export const upsertOrder = createAction(
-//   '[Order/API] Upsert Order',
-//   props<{ order: Order }>()
-// );
+export const loadMoreOrders = createAction(
+  '[Order] Load More Orders',
+  props<{ params: any }>()
+);
 
-// export const addOrders = createAction(
-//   '[Order/API] Add Orders',
-//   props<{ orders: Order[] }>()
-// );
+export const loadMoreOrdersSuccess = createAction(
+  '[Order] Load More Orders Success',
+  props<{ orders: Order[] }>()
+);
 
-// export const upsertOrders = createAction(
-//   '[Order/API] Upsert Orders',
-//   props<{ orders: Order[] }>()
-// );
+export const searchOrders = createAction(
+  '[Order] Search Orders',
+  props<{ params: any }>()
+);
 
-// export const updateOrder = createAction(
-//   '[Order/API] Update Order',
-//   props<{ order: Update<Order> }>()
-// );
+export const searchOrdersSuccess = createAction(
+  '[Order] Search Orders Success',
+  props<{ orders: Order[] }>()
+);
 
-// export const updateOrders = createAction(
-//   '[Order/API] Update Orders',
-//   props<{ orders: Update<Order>[] }>()
-// );
+export const noOrdersLeft = createAction('[Order] No Orders Left');
 
-// export const deleteOrder = createAction(
-//   '[Order/API] Delete Order',
-//   props<{ id: string }>()
-// );
-
-// export const deleteOrders = createAction(
-//   '[Order/API] Delete Orders',
-//   props<{ ids: string[] }>()
-// );
-
-// export const clearOrders = createAction('[Order/API] Clear Orders');
+export const clearOrders = createAction('[Order] Clear Orders');
