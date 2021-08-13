@@ -1,0 +1,46 @@
+<app-sidebar-header></app-sidebar-header>
+
+<main class="content">
+  <div class="page-title">
+    <h4>История заказов</h4>
+    <button
+      (click)="filterVisible = !filterVisible"
+      class="btn btn-small js-filter tooltipped"
+    >
+      <i class="material-icons">filter_list</i>
+    </button>
+  </div>
+
+  <app-history-filter
+    *ngIf="filterVisible"
+    (onFilter)="applyFilter($event)"
+  ></app-history-filter>
+
+  <ng-container
+    *ngIf="!(isLoading$ | async) && (orders$ | async) as orders; else loader"
+  >
+    <app-history-list [orders]="orders"></app-history-list>
+
+    <div *ngIf="!(isLastOrder$ | async)" class="center mb2">
+      <button
+        *ngIf="!(isPending$ | async); else loaderBtn"
+        (click)="loadMore()"
+        class="btn waves-effect grey darken-1 btn-small"
+      >
+        Загрузить еще
+      </button>
+
+      <ng-template #loaderBtn>
+        <div class="center">
+          <app-loader [btnLoader]="true"></app-loader>
+        </div>
+      </ng-template>
+    </div>
+  </ng-container>
+
+  <ng-template #loader>
+    <div class="center">
+      <app-loader></app-loader>
+    </div>
+  </ng-template>
+</main>
