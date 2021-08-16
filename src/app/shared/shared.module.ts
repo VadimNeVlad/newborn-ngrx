@@ -7,6 +7,8 @@ import { InputComponent } from './components/input/input.component';
 import { SidebarHeaderComponent } from './components/sidebar-header/sidebar-header.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -15,14 +17,16 @@ import { ModalComponent } from './components/modal/modal.component';
     SidebarHeaderComponent,
     LoaderComponent,
     ModalComponent,
+    BarChartComponent,
   ],
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, ChartsModule],
   exports: [
     AuthHeaderComponent,
     InputComponent,
     SidebarHeaderComponent,
     LoaderComponent,
     ModalComponent,
+    BarChartComponent,
   ],
 })
 export class SharedModule {}

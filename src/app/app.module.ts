@@ -15,6 +15,7 @@ import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,6 +38,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     AuthModule,
     SharedModule,
     HttpClientModule,
+    ChartsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

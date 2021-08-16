@@ -51,7 +51,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
     this.getLoadMoreOrders();
   }
 
-  queryParamsValues() {
+  queryParamsValues(): Filter {
     const params = Object.assign({}, this.filter, {
       offset: this.orderService.offset,
       limit: this.orderService.limit,
